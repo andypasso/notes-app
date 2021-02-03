@@ -50,8 +50,8 @@ class SidebarComponent extends Component {
                       <SidebarItemComponent
                         _note={_note}
                         _index={_index}
-                        selecteedNoteIndex={selectedNoteIndex}
-                        selectNote={this.selecNote}
+                        selectedNoteIndex={selectedNoteIndex}
+                        selectNote={this.selectNote}
                         deleteNote={this.deleteNote}
                         >
   
@@ -84,10 +84,8 @@ class SidebarComponent extends Component {
   newNote = () => {
     console.log(this.state)
   }
-  selectNote = () => {
-    console.log(' selec note ')
-  }
-  deleteNote = () => {
+  selectNote = (n, i) => this.props.selectNote(n, i)
+  deleteNote = (note) => {
     console.log(' delete note ')
   }
 }
