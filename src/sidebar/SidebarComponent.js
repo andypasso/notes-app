@@ -31,7 +31,7 @@ class SidebarComponent extends Component {
               <div>
                 <input type = 'text'
                   className= {classes.newNoteInput}
-                  placeholder= 'enteer note title'
+                  placeholder= 'enter note title'
                   onKeyUp= {(e) => this.updateTitle(e.target.value)}>
   
                 </input>
@@ -72,22 +72,20 @@ class SidebarComponent extends Component {
   }
 
   newNoteBtnClick = () => {
-    console.log(' NEW BTN CLICKED')
     this.setState({ title: null, addingNote: !this.state.addingNote})
   }
 
   updateTitle = (txt) => {
-    console.log('here it is', txt)
     this.setState({ title: txt })
   }
 
   newNote = () => {
-    console.log(this.state)
+    this.props.newNote(this.state.title);
+    this.setState({title:null ,addingNote: false,
+    })
   }
   selectNote = (n, i) => this.props.selectNote(n, i)
-  deleteNote = (note) => {
-    console.log(' delete note ')
-  }
+  deleteNote = (note) => this.props.deleteNote(note)
 }
 
 
