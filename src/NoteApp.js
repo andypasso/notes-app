@@ -4,7 +4,7 @@ import SidebarComponent from './sidebar/SidebarComponent';
 import EditorComponent from './editor/EditorComponent';
 import './App.css'
 
-export default class App extends Component {
+export default class NoteApp extends Component {
 
   constructor() {
     super();
@@ -41,7 +41,7 @@ export default class App extends Component {
   componentDidMount = () => {
     firebase
       .firestore()
-      .collection('notes')
+      .collection(this.props.location.state.user)
       .onSnapshot(serverUpdate => {
         const notes = serverUpdate.docs.map(_doc => {
           const data = _doc.data();
@@ -56,7 +56,7 @@ export default class App extends Component {
   noteUpdate = (id, noteObj)=> {
     firebase
       .firestore()
-      .collection('notes')
+      .collection(this.props.location.state.user)
       .doc(id)
       .update({
         title:noteObj.title,
@@ -71,7 +71,7 @@ export default class App extends Component {
     };
     const newFromDB = await firebase
     .firestore()
-    .collection('notes')
+    .collection(this.props.location.state.user)
     .add({
       title: note.title,
       body: note.body,
@@ -90,7 +90,7 @@ export default class App extends Component {
 
     firebase
     .firestore()
-    .collection('notes')
+    .collection(this.props.location.state.user)
     .doc(note.id)
     .delete()
   }
