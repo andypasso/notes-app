@@ -2,6 +2,10 @@
 
 This project is the response [Mintbean's create a text editor hackathlon](https://www.mintbean.io/meets/817b12c6-cd0a-42a5-bac6-6d6311be7327).
 
+## Screenshot
+
+  ![screenshot](./screenshot.png)
+
 ## Live Version
 
   A live version of the project can be found [here](https://my-notetaking-app.netlify.app/)
