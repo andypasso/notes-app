@@ -5,7 +5,36 @@ import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, 4, false] }],
+    ['bold', 'italic', 'underline', 'blockquote'],
+    [{ color: [] }],
+    [{ align: [] }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ indent: '-1' }, { indent: '+1' }],
+    ['link', 'image'],
+  ],
+};
+
+const formats = [
+  'header',
+  'bold',
+  'color',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'align',
+  'indent',
+  'link',
+  'image',
+];
+
 class EditorComponent extends React.Component {
+
   constructor(){
     super();
     this.state = {
@@ -13,7 +42,7 @@ class EditorComponent extends React.Component {
       title: '',
       id: ''
     };
-
+    this.myRef = React.createRef();
   };
 
   componentDidMount = () => {
@@ -41,14 +70,17 @@ class EditorComponent extends React.Component {
         <BorderColorIcon className={classes.editIcon}></BorderColorIcon>
         <input 
           className={classes.titleInput}
-          placeHolder={'Note title'}
+          placeholdere={'Note title'}
           value={this.state.title ? this.state.title : ''}
           onChange={(e)=> this.updateTitle(e.target.value)}
         >
         </input>
         <ReactQuill
+          theme="snow"
           value={this.state.text}
-          onChange={this.updateBody}/>
+          onChange={this.updateBody}
+          modules={modules}
+          formats={formats} />
         
       </div>
     )
