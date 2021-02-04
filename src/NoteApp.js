@@ -16,7 +16,7 @@ export default class NoteApp extends Component {
   }
   render() {
     return (
-      <div className='app-container' style= {{  }}>
+      <div className='app-container'>
         <SidebarComponent 
           selectedNoteIndex = {this.state.selectedNoteIndex}
           notes= {this.state.notes} 
