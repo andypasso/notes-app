@@ -85,7 +85,6 @@ export default class NoteApp extends Component {
   }
 
     deleteNote = async (note) => {
-    const noteIndex = this.state.notes.indexOf(note);
     await this.setState({ notes: this.state.notes.filter(_note => _note !== note),selectedNoteIndex: null, selectedNote: null,});
 
     firebase
